@@ -24,7 +24,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>13. jstl</title>
+<title>13. jstl 예제</title>
 </head>
 <body>
 
