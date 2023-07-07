@@ -17,5 +17,13 @@ function bw_check(){
 		$("#board_cont").val("").focus();
 		return false;
 	}
+	
+	/*$board_name = $trim($('#board_name').val());
+	if($board_name.length ==0){
+		alert('글쓴이를 입력하세요');
+		$('#board_name').val('').focus();
+		return false;
+	}*/
+	
 
 }

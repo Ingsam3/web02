@@ -7,7 +7,7 @@
 		<title>2. 서블릿 MVC 게시판 입력폼</title>
 <script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 
-		<script type="text/javascript" src="../../js/b.js"></script>
+		<script type="text/javascript" src="./js/b.js"></script>
 		<script type="text/javascript">
 		
 		

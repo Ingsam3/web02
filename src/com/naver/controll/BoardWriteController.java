@@ -20,7 +20,7 @@ public class BoardWriteController extends HttpServlet {
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	
 		RequestDispatcher bwForward = 
-				 request.getRequestDispatcher("./view/board/boardWrite.jsp");
+				 request.getRequestDispatcher("./views/board/boardWrite.jsp");
 		
 		//화면에 보여지는 뷰페이지(view)경로 설정
 		bwForward.forward(request, response);
