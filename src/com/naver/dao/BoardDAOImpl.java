@@ -2,6 +2,7 @@ package com.naver.dao;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.naming.Context;
@@ -72,13 +73,52 @@ public class BoardDAOImpl {
 		}
 		return result;
 		
-	}
+	}//insertBoard()	
 
 	//게시판 목록 가져오기
 	public List<BoardDTO> getBoardList() {
 		//여기 작성해야함
+	List<BoardDTO> blist=new ArrayList<>();
 		
+		try {
+			con=ds.getConnection();
+			sql="select * from boardT8 order by board_no desc";
+			pt=con.prepareStatement(sql);
+			rs=pt.executeQuery();//검색 결과 레코드를 rs에 저장
+			while(rs.next()) {//검색된 다음 레코드 행이 존재하면 참
+				BoardDTO b=new BoardDTO();
+				b.setBoard_no(rs.getInt("board_no"));//board_no컬럼으로 부터 정수 숫자 레코드를 가져와서
+				//setter()메서드에 저장
+				b.setBoard_name(rs.getString("board_name"));//board_name컬럼으로 부터 문자열 레코드를
+				//가져와서 setter()메서드에 저장
+				b.setBoard_title(rs.getString("board_title"));
+				b.setBoard_hit(rs.getInt("board_hit"));
+				b.setBoard_date(rs.getString("board_date"));
+				
+				blist.add(b);//컬렉션에 추가
+			}
+		}catch(Exception e) {e.printStackTrace();}
+		finally {
+			try {
+				if(rs != null) rs.close();
+				if(pt != null) pt.close();
+				if(con != null) con.close();
+			}catch(Exception e) {e.printStackTrace();}
+		}
 		
+		return blist;
+	}//getBoardList()
+
+	public void updateHit(int board_no) {
+	       /* 문제 1)번호를 기준으로 조회수를 증가 시켜보자. 개발자 테스트까지 해본다. */
+
+	}
+
+	public BoardDTO getBoardCont(int board_no) {
+		/* 문제 2)번호를 기준으로 오라클 DB boardT8테이블로 부터 레코드를 가져오게 만들어 보자. 
+	        */
 		return null;
 	}
+	
+	
 }
