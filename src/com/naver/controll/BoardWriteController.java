@@ -25,11 +25,7 @@ public class BoardWriteController extends HttpServlet {
 		//화면에 보여지는 뷰페이지(view)경로 설정
 		bwForward.forward(request, response);
 		
-		/*RequestDispatcher 특징 :
-		 1. 기존 url-pattern 매핑 주소값을 유지한 채 해당 뷰페이지로 이동
-		  
-		  
-		 * */
+		
 		
 		
 	}

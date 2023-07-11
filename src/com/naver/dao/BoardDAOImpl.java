@@ -167,28 +167,49 @@ public class BoardDAOImpl {
 	
 	//게시판 수정 메서드	
 	public int boardEdit(BoardDTO eb) {
-		BoardDTO bc = null;
+		
 		int re = -1 ; //실패시 반환값
 		 try {
 				con=ds.getConnection();
-				sql="update boardT8 set  where board_no=?";
+				sql="update boardT8 set board_name=?,board_title=?,board_cont=? where board_no=?";
 				pt=con.prepareStatement(sql);
-				pt.setString(1,bc.getBoard_name() );
-				pt.setString(2, bc.getBoard_title());
-				pt.setString(3, bc.getBoard_cont());
-				pt.setInt(4, bc.getBoard_no());
-				pt.executeUpdate();//수정 쿼리문 수행후 검색 결과 레코드를   저장
+				pt.setString(1, eb.getBoard_name() );
+				pt.setString(2, eb.getBoard_title());
+				pt.setString(3, eb.getBoard_cont());
+				pt.setInt(4, eb.getBoard_no());
+				re = pt.executeUpdate();//수정 쿼리문 수행후 검색 결과 레코드를   저장
 			
 			}catch(Exception e) {e.printStackTrace();}
 			finally {
 				try {
-					//if(rs != null) rs.close();
 					if(pt != null) pt.close();
 					if(con != null) con.close();
 				}catch(Exception e) {e.printStackTrace();}
 			}
 		return re;
 	}//boardEdit end
+
+	
+	//삭제 
+	public int delBoard(int board_no) {
+		int re = -1 ; //실패시 반환값
+		 try {
+				con=ds.getConnection();
+				sql="delete from boardT8 where bno=?";
+				pt=con.prepareStatement(sql);
+				pt.setInt(1,board_no );
+				re = pt.executeUpdate();//삭제 쿼리문 수행후 검색 결과 레코드를   저장
+			
+			}catch(Exception e) {e.printStackTrace();}
+			finally {
+				try {
+					if(pt != null) pt.close();
+					if(con != null) con.close();
+				}catch(Exception e) {e.printStackTrace();}
+			}
+		
+		return re;
+	}//delBoard end
 
 	
 }
