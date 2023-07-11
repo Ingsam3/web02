@@ -13,38 +13,30 @@ import com.naver.dao.BoardDAOImpl;
 import com.naver.vo.BoardDTO;
 
 
-@WebServlet("/board_edit_ok")
+@WebServlet("/board_Edit_ok")
 public class BoardEditOkController extends HttpServlet {
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		response.setContentType("text/html;charset=UTF-8");
 		
-		PrintWriter out=response.getWriter();//출력스트림 객체 생성
 		request.setCharacterEncoding("UTF-8");//post방식으로 전송되는 한글을 안 깨지게 한다.
 		
-		String name = request.getParameter("board_name");//board_name 피라미터 이름에 저장되어 져서
+		int board_no =Integer.parseInt(request.getParameter("board_no")) ;
+		String board_name = request.getParameter("board_name");//board_name 피라미터 이름에 저장되어 져서
 		//전달된 글쓴이를 받아서 좌측 변수 name에 저장
-		String title = request.getParameter("board_title");
-		String content = request.getParameter("board_cont");
+		String board_title = request.getParameter("board_title");
+		String board_content = request.getParameter("board_cont");
 		
-		out.println("글쓴이 :"+ name +"<hr>");
-		out.println("글제목 : "+ title + "<hr>");
-		out.println("글내용 : " + content + "<hr>");
-		
-        BoardDTO b=new BoardDTO();
-        b.setBoard_name(name); b.setBoard_title(title); b.setBoard_cont(content);
-	
+        BoardDTO eb=new BoardDTO();
+        eb.setBoard_name(board_name); eb.setBoard_title(board_title); eb.setBoard_cont(board_content);
+        eb.setBoard_no(board_no);
+        
         BoardDAOImpl bdao = new BoardDAOImpl();
-        int result = bdao.boardEdit(eb);//서블릿 MVC 게시판 저장
+        int re = bdao.boardEdit(eb);//서블릿 MVC 게시판 저장
         /* 문제) 게시판 저장되게 하는 boardEdit()메서드를 작성한다. 그리고 개발자 테스트까지 해보자. 
          */
         
-        if(result == 1) {
-        	//out.println("서블릿 MVC 게시판 저장 성공!");
-        	out.println("<script>");
-        	out.println("alert('서블릿 MVC 게시판 수정에 성공했습니다!');");
-        	out.println("location='board_list';");
-        	out.println("</script>");
+        if(re == 1) {
+        	response.sendRedirect("board_cont?no="+board_no);
         }
 	}
 
