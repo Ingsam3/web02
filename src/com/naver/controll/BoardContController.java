@@ -42,5 +42,9 @@ public class BoardContController extends HttpServlet {
         * 특히 내용은 textarea에서 엔터키를 친부분을 줄바꿈해서 나오게 해 보자. 제일 밑에 수정,삭제,목록 버튼을 추가하면 
         * 된다.
         */
+       
+       
+       
+       
 	}	
 }

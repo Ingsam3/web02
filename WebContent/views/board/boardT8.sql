@@ -10,6 +10,7 @@ create table boardT8(
 insert into boardT8 values(0,'1','1','1','1',sysdate);
 
 select * from boardT8 order by board_no desc;
+delete from boardT8 where board_no =0;
 
 select * from boardT8 order by board_no desc;
 --큰숫자 번호순으로 먼저 생김

@@ -15,7 +15,7 @@
 	</head>
 	<body>
 		<h2>서블릿 MVC 게시판 입력폼 </h2>
-		<form method="post"action="board_wite_ok.jsp" onsubmit="return bw_check();">
+		<form method="post"action="board_write_ok" onsubmit="return bw_check();">
 			글쓴이 : <input type="text" name="board_name" id="board_name" size="14">
 			<br><br>
 			글제목 : <input type="text" name="board_title" id="board_title" size="36">
