@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
+  <display-name>web02</display-name>
+  <welcome-file-list>
+    <welcome-file>index.html</welcome-file>
+    <welcome-file>index.htm</welcome-file>
+    <welcome-file>index.jsp</welcome-file>
+    <welcome-file>default.html</welcome-file>
+    <welcome-file>default.htm</welcome-file>
+    <welcome-file>default.jsp</welcome-file>
+  </welcome-file-list>
+  
+  <!-- xml주석문기호, board_cont 매핑주소에 해당하는 서블릿 설정 -->
+  <servlet>
+    <servlet-name>BoardContController</servlet-name> <!-- 서블릿 클래스명 -->
+    <servlet-class>com.naver.controller.BoardContController</servlet-class> <!-- 풀패키지
+    경로 -->
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BoardContController</servlet-name>
+    <url-pattern>/board_cont</url-pattern> <!-- 매핑주소 등록 -->
+  </servlet-mapping>
+  
+  <!-- 하나의 사이트 당 하나의 서블릿 컨트롤러 클래스만 작동되게 하면서 그 하위구조로 다수의 매핑주소와 컨트롤러가 작동되게
+  변경 -->
+  <servlet>
+    <servlet-name>MFrontController</servlet-name> <!--  서블리 클래스명 -->
+    <servlet-class>com.naver.controller.MFrontController</servlet-class> <!-- 풀패키지 경로 -->  
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>MFrontController</servlet-name>
+    <url-pattern>*.naver</url-pattern> <!--  브라우저 주소창에 실행되는 url-pattern 매핑주소 *.naver
+    가 실행되면 com.naver.controller 패키지 폴더의 MFrontController 서블릿 클래스가 인터넷 웹상에 실행된다. -->
+  </servlet-mapping>
+</web-app>
+
+
+
+
+
+
+
