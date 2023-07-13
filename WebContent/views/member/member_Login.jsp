@@ -7,7 +7,7 @@
 <head>
 <meta charset="UTF-8">
 <title>서블릿 MVC 회원관리 로그인 폼</title>
-<script src="./js/jquery.js"></script>
+<script src="https://code.jquery.com/jquery-3.4.1.js"></script>
 <script>
   function login_check(){
 	  if($.trim($("#login_id").val()) == ""){
