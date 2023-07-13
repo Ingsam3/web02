@@ -54,9 +54,55 @@ function join_check(){
 }
 	//아이디 중복 검색
 	
-function join_check(){
+function id_check(){
 
 $('#id_check').hide(); // 아이디 영역을 숨긴다
 $mem_id = $.trim($('#mem_id').val());
 //문자영역 보이게 하는 
+
+if(!(validate_mem_id($mem_id))){
+	#newtext="<font color='red' size='1'><b>아이디는 영문소문자,숫자, _조합만 가능합니다</b></font>"
+	$('#idcheck').text('');
+	$('#idcheck').show();
+	$('#idcheck').append($newtext);
+	$('#idcheck').val('').focus();
+	return false;
+}
+//비동기식 jquery Ajax
+$.ajax({
+	type:'POST', // 자료를 서버로 보내는 법
+	url : 'mem_idcheck.naver', // 서버 매핑 주소
+	date :{ 'id' : $mem_id} , //id 파라미터 이름에 $mem_id 변수값을 담아서 전달
+	datatype : 'int', //받아오는 자료 형식
+	success : function(result){
+		//비동기식 아작스로 받아오는 성공시 호출되는 변수
+		if($result == 1){
+			//중복 아이디인 경우
+			$newtext = "<font color='red' size='1'>중복아이디입니다.</font>"
+			
+		}else{
+			//중복 아이디가 아닌 경우
+			$newtext = "<font color='blue' size='2'>사용가능한 아이디입니다</font>"
+			$('#idcheck').text('');
+			$('#idcheck').show();
+			$('#idcheck').append($newtext);
+			$('#mem_pwd').focus();
+		}
+	},
+	error:function(){
+	//에러가 발생했을 때 실행
+	alert('data Error!');
+	}
+});
+
+
+//아이디 정규 표현식 유효성 검사
+function validate_memid($mem_id){
+	var pattern = new ReExp(/^[a-z0-9]+$/);
+	//아이디는 영문 소문자 , 숫자, _조합만 가능
+	return pattern.test($mem_id);
+}
+
+}
+
 }	
