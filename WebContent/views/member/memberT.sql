@@ -18,3 +18,4 @@ mem_date) values('aaaaaa','777777','홍길동','010','9999','9999','hong','naver
 
 select * from memberT8 order by  mem_id asc;
 
+commit;

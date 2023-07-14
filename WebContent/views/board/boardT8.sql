@@ -1,35 +1,24 @@
+--boardT8 í…Œì´ë¸” ìƒì„±
 create table boardT8(
-    board_no int primary key -- °Ô½ÃÆÇ¹øÈ£
-    ,board_name varchar2(20) not null --±Û¾´ÀÌ 
-    ,board_title varchar2(20) not null --±ÛÁ¦¸ñ
-    ,board_cont varchar2(20) not null --±Û³»¿ë
-    ,board_hit number(38) default 0 -- Á¶È¸¼ö
-    ,board_date date default sysdate -- µî·Ï³¯Â¥
-    -- ¿À¶óÅ¬ sysdate ÇÔ¼ö¿¡ ÀÇÇØ¼­ ¿À´Ã ³¯Â¥¿Í ½Ã°£°ªÀÌ ÀúÀåµÈ´Ù
-);
-insert into boardT8 values(0,'1','1','1','1',sysdate);
-
-select * from boardT8 order by board_no desc;
-delete from boardT8 where board_no =0;
-
-select * from boardT8 order by board_no desc;
---Å«¼ıÀÚ ¹øÈ£¼øÀ¸·Î ¸ÕÀú »ı±è
-
--- ½ÃÄö½º »ı¼º
-create SEQUENCE boardNo_seq
-start with 1
-INCREMENT by 1
-NOCACHE;
-
---½ÃÄö½º ´ÙÀ½ °ª È®ÀÎ
-select boardNo_seq.nextval as "½ÃÄö½º¹øÈ£°ª" from dual;
-
-
-
-
-
-
-
-
-
-
+  board_no int primary key --ê²Œì‹œíŒ ë²ˆí˜¸
+  ,board_name varchar2(50) not null -- ê¸€ì“´ì´
+  ,board_title varchar2(200) not null -- ê¸€ì œëª©
+  ,board_cont varchar2(4000) not null --ê¸€ë‚´ìš©
+  ,board_hit number(38) default 0 -- ì¡°íšŒìˆ˜
+  ,board_date date default sysdate -- ë“±ë¡ë‚ ì§œ,  default sysdate ì œì•½ì¡°ê±´ì„ ì£¼ë©´ í•´ë‹¹  ì»¬ëŸ¼ì— êµ³ì´ ë ˆì½”ë“œë¥¼ ì €ì¥í•˜ì§€ ì•Šì•„ë„ ê¸°ë³¸ê°’ì¸
+  --ì˜¤ë¼í´ sysdateí•¨ìˆ˜ì— ì˜í•´ì„œ ì˜¤ëŠ˜ ë‚ ì§œì™€ ì‹œê°„ê°’ì´ ì €ì¥ëœë‹¤.
+  );
+  
+  select * from boardT8 order by board_no desc; --ê²Œì‹œíŒ ë²ˆí˜¸ë¥¼ ê¸°ì¤€ìœ¼ë¡œ ë‚´ë¦¼ì°¨ìˆœ ì •ë ¬
+  
+  --boardNo_seqë¼ëŠ” ì‹œí€€ìŠ¤ ìƒì„±
+  create sequence boardNo_seq
+  start with 1 -- 1ë¶€í„° ì‹œì‘
+  increment by 1 -- 1 ì”© ì¦ê°€
+  nocache;
+  
+  --boardNo_seqë¼ëŠ” ì‹œí€€ìŠ¤ ë‹¤ìŒë²ˆí˜¸ê°’ í™•ì¸
+  select boardNo_seq.nextval as "ì‹œí€€ìŠ¤ ë²ˆí˜¸ê°’" from dual;
+  
+  
+  

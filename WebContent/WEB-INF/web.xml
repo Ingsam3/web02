@@ -24,7 +24,7 @@
   <!-- 하나의 사이트 당 하나의 서블릿 컨트롤러 클래스만 작동되게 하면서 그 하위구조로 다수의 매핑주소와 컨트롤러가 작동되게
   변경 -->
   <servlet>
-    <servlet-name>MFrontController</servlet-name> <!--  서블릿 클래스명 -->
+    <servlet-name>MFrontController</servlet-name> <!--  서블리 클래스명 -->
     <servlet-class>com.naver.controller.MFrontController</servlet-class> <!-- 풀패키지 경로 -->  
   </servlet>
   <servlet-mapping>
