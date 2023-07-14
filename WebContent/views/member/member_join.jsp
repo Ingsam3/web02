@@ -10,7 +10,7 @@
 </head>
 <body>
 <h2>회원가입과 프로필 사진 업로드</h2>
-<form method="post" action="mem_join_ok.naver" onsubmit="return join_check();"
+<form name="m" method="post" action="mem_join_ok.naver" onsubmit="return join_check();"
 enctype="multipart/form-data">
 <%--
    파일을 첨부해서 서버에 업로드 할려는 자료실 기능을 만들기 위해서 해야하는 규칙)
@@ -66,9 +66,9 @@ enctype="multipart/form-data">
      <td>
       <input name="mail_id" id="mail_id" size="16" >@<input name="mail_domain" 
       id="mail_domain" size="20" readonly > <%-- readonly속성은 읽기만 가능 --%>
-      <select name="mail_list" onchange="mail_list();">
+      <select name="mail_list" onchange="domain_list();">
        <c:forEach var="mail" items="${email}">
-         <option value="mail">${mail}</option>
+         <option value="${mail}">${mail}</option>
        </c:forEach>
       </select>
      </td>

@@ -131,7 +131,7 @@
  }
  
  //메일 주소 선택과 직접 입력
- function mail_list(){
+ function domain_list(){
    var num = m.mail_list.selectedIndex; //선택한 목록 항목 번호를 반환=>첫번째 목록 항목 번호는 0
    if(num  == -1){//목록이 선택되지 않았다면
      return true;
